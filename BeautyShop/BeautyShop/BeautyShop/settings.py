@@ -75,8 +75,11 @@ WSGI_APPLICATION = 'BeautyShop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'beautyshop',
+        'USER': 'root',
+        'PASSWORD': 'aaaaa',
+        'OPTIONS':{'init_command': 'SET default_storage_engine=INNODB;',}
     }
 }
 
