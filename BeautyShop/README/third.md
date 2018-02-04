@@ -2,6 +2,10 @@
 
 1、添加名为 `apps` 的package，用于存放应用
 
+    (1)users：用户信息
+    (2)goods：商品信息
+    (3)trade：交易信息
+
 2、添加名为 `extra_apps` 的的package，用于存放第三方包
 
 3、添加名为 `templates` 的文件夹，用于存放静态文件
