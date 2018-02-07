@@ -45,8 +45,8 @@ class GoodsCategoryBrand(models.Model):
         return self.name
 
 class Goods(models.Model):
-    category = models.ForeignKey(GoodsCategory，verbose_name="商品类目")
-    goods_sn = models.CharField(,max_length=50, default="", verbose_name="商品唯一货号")
+    category = models.ForeignKey(GoodsCategory, verbose_name="商品类目")
+    goods_sn = models.CharField(max_length=50, default="", verbose_name="商品唯一货号")
     name = models.CharField(max_length=300, verbose_name="商品名")
     click_num = models.IntegerField(default=0, verbose_name="点击数")
     fav_num = models.IntegerField(default=0, verbose_name="商品销售量")
@@ -54,10 +54,10 @@ class Goods(models.Model):
     market_price = models.FloatField(default=0, verbose_name="库存数")
     shop_price = models.FloatField(default=0, verbose_name="市场价格")
     goods_brief = models.TextField(max_length=500, verbose_name="商品简短描述")
-    goods_decs = UEditorField(verbose_name=u"内容", imagePath="goods/images", width=1000, heigth=300,filePath="goods/files", default=)
+    goods_decs = UEditorField(verbose_name=u"内容", imagePath="goods/images", width=1000, heigth=300, filePath="goods/files", default="图片描述")
     ship_free = models.BooleanField(default=True, verbose_name="是否承担运费")
-    goods_front_image = models.ImageField(upload_to=)
-    goods_front_image_url = models.CharField()
+    goods_front_image = models.ImageField(upload_to="")
+   
     is_new = models.BooleanField(default=False, verbose_name="是否新品")
     is_hot = models.BooleanField(default=False, verbose_name="是否热销")
     add_time = models.DateTimeField()
