@@ -18,7 +18,7 @@ class UserProfile(AbstractUser):
         verbose_name_plural = verbose_name
     
     def __str__(self):
-        return self.name
+        return self.username
 
 class VerifyCode(models.Model):
     code = models.CharField(max_length=10, verbose_name="验证码")
