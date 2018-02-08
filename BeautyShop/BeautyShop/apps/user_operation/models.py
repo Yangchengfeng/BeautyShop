@@ -51,7 +51,7 @@ class UserLeavingMessage(models.Model):
     def __str__(self):
         return self.subject
 
-class UserAddres(models.Model):
+class UserAddress(models.Model):
     """
     用户收货地址
     """
