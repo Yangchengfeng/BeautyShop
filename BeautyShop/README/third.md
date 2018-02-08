@@ -13,3 +13,7 @@
 4、添加名为 `media` 的文件夹，用于存放资源，例如：图片
 
 5、添加名为 `db_tools` 的文件夹，用于存放脚本文件
+
+### TODO：每次更新models，别忘了：
+#   - python manage.py makemigrations XXX
+#   - 使用：python manage.py migrate 生成数据表，可以通N过avicat Premium等工具看到        生成的表
