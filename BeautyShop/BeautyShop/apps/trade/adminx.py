@@ -5,11 +5,11 @@ import xadmin
 from .models import ShoppingCart, OrderInfo, OrderGoods
 
 class ShoppingCartAdmin(object):
-    list_display = ["user", "goods", "nums", ]
+    list_display = ["user", "goods", "goods_num", ]
 
 
 class OrderInfoAdmin(object):
-    list_display = ["user", "order_sn",  "trade_no", "pay_status", "post_script", "order_mount",
+    list_display = ["user", "order_sn",  "trade_num", "pay_status", "post_script", "order_mount",
                     "order_mount", "pay_time", "add_time"]
 
     class OrderGoodsInline(object):
