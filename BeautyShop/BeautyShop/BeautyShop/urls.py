@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 # from django.contrib import admin
 from extra_apps import xadmin
+from goods.view_base import GoodsListView
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
+    url(r'^goods/$', GoodsListView.as_view(), name="good-list"),
 ]

@@ -17,3 +17,7 @@
 ### TODO：每次更新models，别忘了：
 #   - python manage.py makemigrations XXX
 #   - 使用：python manage.py migrate 生成数据表，可以通N过avicat Premium等工具看到        生成的表
+
+### TODO：这里起初使用django版本：1.11.9，出现了点击“增加商品”等“增加”操作时报错，解决方案：降低Django版本(最终使用1.11.7可以使用)
+#   - python manage.py makemigrations XXX
+#   - 使用：python manage.py migrate 生成数据表，可以通N过avicat Premium等工具看到        生成的表
