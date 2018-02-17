@@ -18,8 +18,14 @@ from django.conf.urls import url, include
 from extra_apps import xadmin
 from goods.view_base import GoodsListView
 from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
 from goods.views import GoodsListViewSet
+
+router = DefaultRouter()
+
+router.register(r'new-goods', GoodsListViewSet)
+
 
 goods_list = GoodsListViewSet.as_view({
     'get': 'list',
@@ -31,5 +37,6 @@ urlpatterns = [
     url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
     url(r'^goods/$', goods_list, name="good-list"),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'docs/$', include_docs_urls(title="BeautyGirls"))
+    url(r'docs/$', include_docs_urls(title="BeautyGirls")),
+    url(r'^', include(router.urls)),
 ]
