@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from .serializers import GoodsSerializer
-from rest_framework import mixins
-from rest_framework import generics
+from rest_framework import viewsets, mixins
 from rest_framework.pagination import PageNumberPagination
 
 from .models import Goods
@@ -16,7 +15,7 @@ class StandardResultsSetPagination(PageNumberPagination):
     page_size_query_param = "p"
     max_page_size = 4
 
-class GoodsListView(generics.ListAPIView):
+class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = StandardResultsSetPagination

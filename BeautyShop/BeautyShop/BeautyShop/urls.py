@@ -16,15 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 # from django.contrib import admin
 from extra_apps import xadmin
-# from goods.view_base import GoodsListView
+from goods.view_base import GoodsListView
 from rest_framework.documentation import include_docs_urls
 
-from goods.views import GoodsListView
+from goods.views import GoodsListViewSet
+
+goods_list = GoodsListViewSet.as_view({
+    'get': 'list',
+})
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
-    url(r'^goods/$', GoodsListView.as_view(), name="good-list"),
+    url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
+    url(r'^goods/$', goods_list, name="good-list"),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'docs/$', include_docs_urls(title="BeautyGirls"))
 ]
