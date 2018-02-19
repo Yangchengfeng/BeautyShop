@@ -2,7 +2,15 @@ from rest_framework import serializers
 
 from goods.models import Goods, GoodsCategory
 
-class CategorySerializer(serializers.ModelSerializer):
+# Class2
+class CategorySerializer(serializers.ModelSerializer): 
+    class Meta:
+        model = GoodsCategory
+        fields = "__all__"
+
+# Class1
+class GoodsCategorySerializer(serializers.ModelSerializer):
+    sub_cat = CategorySerializer(many=True)
     class Meta:
         model = GoodsCategory
         fields = "__all__"

@@ -20,12 +20,15 @@ from goods.view_base import GoodsListView
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 
-from goods.views import GoodsListViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet
 
 router = DefaultRouter()
 
+#goods - url
 router.register(r'new-goods', GoodsListViewSet, base_name="new-goods")
 
+#category - url
+router.register(r'categorys', CategoryViewSet, base_name="categorys")
 
 goods_list = GoodsListViewSet.as_view({
     'get': 'list',
