@@ -37,9 +37,9 @@ goods_list = GoodsListViewSet.as_view({
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
     url(r'^goods/$', goods_list, name="good-list"),
-    url(r'^api-auth/', include('rest_framework.urls')),
     url(r'docs/$', include_docs_urls(title="BeautyGirls")),
     url(r'^', include(router.urls)),
 ]
