@@ -23,3 +23,7 @@
 # rest framework使用：Requirements & Installation（http://www.django-rest-framework.org/）
 
 1、http://www.django-rest-framework.org/tutorial/3-class-based-views/
+
+2、使用过滤功能时：http://www.django-rest-framework.org/api-guide/filtering/#setting-filter-backends
+
+### TODO：端口被占用时，使用` sudo lsof -t -i tcp:8000 | xargs kill -9`
