@@ -24,7 +24,7 @@ from goods.views import GoodsListViewSet
 
 router = DefaultRouter()
 
-router.register(r'new-goods', GoodsListViewSet, base_name="price_min")
+router.register(r'new-goods', GoodsListViewSet, base_name="new-goods")
 
 
 goods_list = GoodsListViewSet.as_view({

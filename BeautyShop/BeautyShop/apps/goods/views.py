@@ -8,6 +8,7 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Goods
+from .filters import GoodsFilter
 
 # Create your views here.
 class StandardResultsSetPagination(PageNumberPagination):
@@ -29,4 +30,4 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     #     return queryset
 
     filter_backends = (DjangoFilterBackend,)
-    filter_fields = ('name', 'shop_price')
+    filter_class = GoodsFilter

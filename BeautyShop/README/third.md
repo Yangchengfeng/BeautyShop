@@ -26,4 +26,6 @@
 
 2、使用过滤功能时：http://www.django-rest-framework.org/api-guide/filtering/#setting-filter-backends
 
+https://github.com/carltongibson/django-filter/blob/master/README.rst
+
 ### TODO：端口被占用时，使用` sudo lsof -t -i tcp:8000 | xargs kill -9`
