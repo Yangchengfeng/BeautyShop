@@ -5,6 +5,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, mixins, filters
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.authentication import TokenAuthentication
 
 from .serializers import GoodsSerializer, GoodsCategorySerializer
 from .models import Goods, GoodsCategory
@@ -24,6 +25,7 @@ class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = StandardResultsSetPagination
+    authentication_classes = (TokenAuthentication,)
 
     # def get_queryset(self):
     #     queryset = Goods.objects.all()

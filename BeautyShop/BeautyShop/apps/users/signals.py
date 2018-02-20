@@ -11,3 +11,5 @@ def create_user(sender, instance=None, created=False, **kwargs):
         password = instance.password
         instance.set_password(password)
         instance.save()
+        Token.objects.create(user=instance)
+        print "++++++++++++"
