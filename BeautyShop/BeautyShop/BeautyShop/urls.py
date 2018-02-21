@@ -20,6 +20,7 @@ from goods.view_base import GoodsListView
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
+from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
 
@@ -40,6 +41,8 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^api-jwt-token-auth/', obtain_jwt_token),
+
     url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
     url(r'^goods/$', goods_list, name="good-list"),
     url(r'docs/$', include_docs_urls(title="BeautyGirls")),
