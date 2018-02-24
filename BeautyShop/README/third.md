@@ -32,4 +32,6 @@ https://django-filter.readthedocs.io/en/master/
 
 ### TODO：端口被占用时，使用` sudo lsof -t -i tcp:8000 | xargs kill -9`
 
-# JWT : 
+# JWT :
+
+# Django信号量：https://docs.djangoproject.com/en/1.11/ref/signals/
