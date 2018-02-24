@@ -23,18 +23,25 @@ from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
+from users.views import SmsCodeViewset, UserViewset
 
 router = DefaultRouter()
 
-#goods - url
+# goods - url
 router.register(r'new-goods', GoodsListViewSet, base_name="new-goods")
 
-#category - url
+# category - url
 router.register(r'categorys', CategoryViewSet, base_name="categorys")
 
 goods_list = GoodsListViewSet.as_view({
     'get': 'list',
 })
+
+# codes - smsurl
+router.register(r'codes', SmsCodeViewset, base_name="codes")
+
+# user - url
+router.register(r'users', UserViewset, base_name="users")
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),

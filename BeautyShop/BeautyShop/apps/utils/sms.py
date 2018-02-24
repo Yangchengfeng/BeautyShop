@@ -1,3 +1,4 @@
+# encoding: utf-8
 import requests
 
 class YunPian(object):
@@ -17,4 +18,5 @@ class YunPian(object):
         print re_dict
 
 if __name__ == "__main__":
-    yun_pian = YunPian()
+    yun_pian = YunPian("")
+    yun_pian.send_sms("2017", "18826139764")

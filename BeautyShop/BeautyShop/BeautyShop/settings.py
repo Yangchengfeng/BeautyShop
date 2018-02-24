@@ -138,6 +138,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+# REST_FRAMEWORK -- settings
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 3,
@@ -148,3 +149,15 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 }
+
+# JWT -- settings
+import datetime
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
+
+# re -- settings
+REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
+
+APIKEY = ""
