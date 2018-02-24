@@ -75,7 +75,7 @@ class SmsCodeViewset(CreateModelMixin, viewsets.GenericViewSet):
 class UserViewset(CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     serializer_class = UserRegSerializer
     queryset = User.objects.all()
-    authentication_classes = (JSONWebTokenAuthentication, authentication.SessionAuthentication )
+    authentication_classes = (JSONWebTokenAuthentication, authentication.SessionAuthentication, )
 
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -101,7 +101,7 @@ class UserViewset(CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveMode
         re_dict = serializer.data
         payload = jwt_payload_handler(user)
         re_dict["token"] = jwt_encode_handler(payload)
-        re_dict["name"] = user.name if user.name else user.username
+        re_dict["password"] = user.password
 
         headers = self.get_success_headers(serializer.data)
         return Response(re_dict, status=status.HTTP_201_CREATED, headers=headers)
