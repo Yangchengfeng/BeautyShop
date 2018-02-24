@@ -18,7 +18,7 @@ class StandardResultsSetPagination(PageNumberPagination):
     page_size_query_param = "p"
     max_page_size = 4
 
-class GoodsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     """
     分页 过滤(搜索、排序)
     """
