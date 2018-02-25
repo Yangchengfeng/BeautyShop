@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+# -*-coding: utf-8 -*-
+
 from django.conf.urls import url, include
 # from django.contrib import admin
 from extra_apps import xadmin
@@ -56,6 +58,9 @@ urlpatterns = [
 
     url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
     url(r'^goods/$', goods_list, name="good-list"),
-    url(r'docs/$', include_docs_urls(title="BeautyGirls")),
+
+    # drf -- document
+    url(r'docs/', include_docs_urls(title="BeautyGirls")), 
+
     url(r'^', include(router.urls)),
 ]
