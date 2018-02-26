@@ -26,7 +26,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmsCodeViewset, UserViewset
-from user_operation.views import UserFavViewSet
+from user_operation.views import UserFavViewSet, LeavingMessageViewSet
 
 router = DefaultRouter()
 
@@ -48,6 +48,9 @@ router.register(r'users', UserViewset, base_name="users")
 
 # userfav - url
 router.register(r'userfav', UserFavViewSet, base_name="fav")
+
+# message - url
+router.register(r'messages', LeavingMessageViewSet, base_name="messages")
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
