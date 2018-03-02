@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -156,6 +159,13 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
+
+# AUTHENTICATION_BACKENDS
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+    'social_core.backends.weibo.WeiboOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # re -- settings
 REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"

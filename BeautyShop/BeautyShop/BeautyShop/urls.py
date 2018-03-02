@@ -26,7 +26,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmsCodeViewset, UserViewset
-from user_operation.views import UserFavViewSet, LeavingMessageViewSet
+from user_operation.views import UserFavViewSet, LeavingMessageViewSet, AddressViewSet
 
 router = DefaultRouter()
 
@@ -52,6 +52,9 @@ router.register(r'userfav', UserFavViewSet, base_name="fav")
 # message - url
 router.register(r'messages', LeavingMessageViewSet, base_name="messages")
 
+# address - url
+router.register(r'address', AddressViewSet, base_name="address")
+
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
@@ -61,6 +64,9 @@ urlpatterns = [
 
     url(r'^base-goods/$', GoodsListView.as_view(), name="base_good-list"),
     url(r'^goods/$', goods_list, name="good-list"),
+
+    # thirdpart-login
+    url('', include('social_django.urls', namespace='social')),
 
     # drf -- document
     url(r'docs/', include_docs_urls(title="BeautyGirls")), 

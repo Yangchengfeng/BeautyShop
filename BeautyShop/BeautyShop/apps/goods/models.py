@@ -98,3 +98,26 @@ class Banner(models.Model):
 
     def __str__(self):
         return self.goods.name
+
+class IndexAd(models.Model):
+    category = models.ForeignKey(GoodsCategory, related_name='category',verbose_name="商品类目")
+    goods =models.ForeignKey(Goods, related_name='goods')
+
+    class Meta:
+        verbose_name = '首页商品类别广告'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.goods.name
+
+class HotSearchWords(models.Model):
+    keywords = models.CharField(default="", max_length=20, verbose_name="热搜词")
+    index = models.IntegerField(default=0, verbose_name="排序")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    class Meta:
+        verbose_name = '热搜词'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.keywords

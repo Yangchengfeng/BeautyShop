@@ -7,8 +7,8 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authentication import TokenAuthentication
 
-from .serializers import GoodsSerializer, GoodsCategorySerializer
-from .models import Goods, GoodsCategory
+from .serializers import GoodsSerializer, GoodsCategorySerializer, HotWordsSerializer, BannerSerializer, IndexCategorySerializer
+from .models import Goods, GoodsCategory, Banner, HotSearchWords
 from .filters import GoodsFilter
 
 # Create your views here.
@@ -39,7 +39,43 @@ class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewset
     search_fields = ('name', 'goods_brief', 'goods_desc')
     ordering_fields = ('sold_num', 'add_time')
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.click_num += 1
+        instance.save()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
 class CategoryViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    list:
+        商品分类列表数据
+    retrieve:
+        获取商品分类详情
+    """
     # queryset = GoodsCategory.objects.all()
     queryset = GoodsCategory.objects.filter(category_type=2)
     serializer_class = GoodsCategorySerializer
+
+class HotSearchsViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取热搜词列表
+    """
+    queryset = HotSearchWords.objects.all().order_by("-index")
+    serializer_class = HotWordsSerializer
+
+
+class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取轮播图列表
+    """
+    queryset = Banner.objects.all().order_by("index")
+    serializer_class = BannerSerializer
+
+
+class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    首页商品分类数据
+    """
+    queryset = GoodsCategory.objects.filter(is_tab=True, name__in=["护肤", "美妆"])
+    serializer_class = IndexCategorySerializer
