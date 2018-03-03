@@ -24,9 +24,10 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 
-from goods.views import GoodsListViewSet, CategoryViewSet
+from goods.views import GoodsListViewSet, CategoryViewSet, BannerViewset, IndexCategoryViewset
 from users.views import SmsCodeViewset, UserViewset
 from user_operation.views import UserFavViewSet, LeavingMessageViewSet, AddressViewSet
+from trade.views import ShoppingCartViewSet, OrderViewSet
 
 router = DefaultRouter()
 
@@ -54,6 +55,18 @@ router.register(r'messages', LeavingMessageViewSet, base_name="messages")
 
 # address - url
 router.register(r'address', AddressViewSet, base_name="address")
+
+# shopcart
+router.register(r'shopcarts', ShoppingCartViewSet, base_name="shopcarts")
+
+# order
+router.register(r'orders', OrderViewSet, base_name="orders")
+
+# banner
+router.register(r'banners', BannerViewset, base_name="banners")
+
+# homepageIndex
+router.register(r'indexgoods', IndexCategoryViewset, base_name="indexgoods")
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
