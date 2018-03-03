@@ -13,7 +13,7 @@ User = get_user_model()
 class UserFav(models.Model):
     user = models.ForeignKey(User, verbose_name="用户")
     goods = models.ForeignKey(Goods, verbose_name=u"商品")
-    nums = models.DateTimeField(default=0, verbose_name="购买数量")
+    nums = models.IntegerField(default=0, verbose_name="购买数量")
 
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"添加时间")
 
