@@ -6,6 +6,8 @@ from rest_framework import viewsets, mixins, filters
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authentication import TokenAuthentication
+from rest_framework_extensions.cache.mixins import CacheResponseMixin
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
 from .serializers import GoodsSerializer, GoodsCategorySerializer, HotWordsSerializer, BannerSerializer, IndexCategorySerializer
 from .models import Goods, GoodsCategory, Banner, HotSearchWords
@@ -18,10 +20,11 @@ class StandardResultsSetPagination(PageNumberPagination):
     page_size_query_param = "p"
     max_page_size = 4
 
-class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet, CacheResponseMixin):
     """
     分页 过滤(搜索、排序)
     """
+    throttle_classes = (UserRateThrottle, AnonRateThrottle,)
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = StandardResultsSetPagination
